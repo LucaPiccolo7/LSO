@@ -1,0 +1,7 @@
+Consegne:
+1) Creare un file che si chiami come l'utente corrente
+2) Creare un file che si chiami come l'host corrente, e che contenga il nome dell'host corrente
+
+Comandi:
+1) touch $USER
+2) echo $HOSTNAME > $HOSTNAME

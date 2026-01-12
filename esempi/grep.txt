@@ -1,0 +1,50 @@
+Sun Jan 11 13:52:31 CET 2026
+ese1
+ese2
+ese3
+out.txt
+/home/luca/LSO/esempi
+
+. -> indica un qualsiasi carattere singolo
+exp* -> indica che exp si ripete 0 oppure un numero N di volte
+^exp -> indica che la riga inizia con exp
+exp$ -> indica che la riga finisce con exp
+[a-Z] -> indica un carattere compreso nell'intervallo
+[^a-Z] -> indica un carattere al di fuori dell'intervallo
+
+\<exp -> indica una stringa che inizia con exp
+exp>\ -> indica una stringa che finisce con exp
+exp{N} -> indica che exp si ripete esattamente N volte
+exp{N,} -> indica che exp si ripete almeno N volte
+exp{N, M} -> indica che exp si ripete almeno N volte ed al più M volte
+[[:CLASS:]] -> indica un carattere della classe class
+
+[[:alpha:]] -> caratteri alfabetici
+[[:alnum:]] -> caratteri alfanumerici
+[[:digit:]] -> cifre
+[[:lower:]] -> caratteri alfabetici minuscoli
+[[:upper:]] -> caratteri alfabetici maiuscoli
+
+==============================================
+exp+ -> una o più occorrenze di exp
+exp? -> zero o una occorrenza di exp
+exp1 | exp2 -> exp1 oppure exp2
+(exp) -> equivalente ad exp
+
+- per usarli in grep preceduti da \
+- per usarli in egrep nessun simbolo precedente
+=============================================
+
+Esempi (grep):
+
+a*b -> una stringa che ha 0 o N ripetizioni di "a" e finisce con "b": b ab aab aaab ...
+a.*b -> una stringa che ha 0 oppure N ripetizioni di "a." e finisce con b: b aab axb aaab aasb ...
+\<[[:upper:]] -> una stringa che inizia con un carattere maiuscolo
+^d -> una riga che inizia con il carattere d
+^a*$ -> una riga che inizia e che finisce con ripetizioni da 0 ad N di "a": SI 0\, a, aba, abaa, aaba, aabaa ..., NO ab, bab, ...
+^a.*b$ -> una riga che inizia con "a", finisce con "b" ed in mezzo qualsiasi cosa
+<\.- -> una riga che inizia con qualsiasi carattere seguito da un trattino
+[[:digit:]]\+ -> una o più occorrenze di cifre
+^a\|b -> riga che inizia con a oppure b
+^\(a\|b\) -> riga che inizia con una stringa equivalente ad a oppure b
+\(\(\.txt\) \| \(\.doc\)\)\> -> un rigo che finisce con con .txt oppure .doc

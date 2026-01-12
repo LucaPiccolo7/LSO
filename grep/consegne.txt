@@ -1,0 +1,11 @@
+Esercizi con risposte per grep
+
+1) Elencare i file con permesso di esecuzione per il proprietario
+2) Elencare la directory il cui nome inizia per maiuscola
+3) Elencare i file con permesso di esecuzione oppure di scrittura per il gruppo di appartenenza
+
+
+1) ls -l | grep '^-..x'
+2) ls | grep '\<[[:upper:]]'
+3) ls -l | egrep '^-....w?x?'
+
