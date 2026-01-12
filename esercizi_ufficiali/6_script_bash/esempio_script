@@ -1,0 +1,54 @@
+#!/bin/bash
+
+: '
+echo "ora con \$\*"
+for x in "$*"
+do
+	echo "ecco $x"
+done
+
+echo "ora con \$\@"
+
+for x in "$@"
+do
+	echo "ecco $x"
+done
+'
+
+: '
+if [ $# -eq 1 ]
+then
+	case $1 in
+		hello) echo "Inglese" ;;
+		howdy) echo "Americano" ;;
+		ciao) echo "Italiano" ;;
+		bonjour) echo "Francese" ;;
+		*) echo "Sconosciuto" ;;
+	esac
+
+	exit 0
+else
+	echo "ci deve essere esattamente un argomento!"
+	exit -1
+fi
+'
+
+: '
+echo "Dimmi qualcosa: "
+read cosa
+echo "Mi hai detto: $cosa"
+'
+
+: '
+i=20
+while [ $i -ge 10 ]
+do
+        echo "$i"
+        i=$(( $i - 1 ))
+done
+'
+
+until [ -e $1 ]
+do
+	echo "non esiste il file $1"
+done

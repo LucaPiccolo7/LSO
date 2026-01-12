@@ -1,0 +1,47 @@
+====ESERCIZI LEZIONE 6 SCRIPT BASH====
+
+1) Scrivere uno script "eccho" che prende un argomento e lo stampa due volte
+
+#!/bin/bash
+var=$1
+echo $1 $1
+
+2) Scrivere uno script "bis" che prende un comando come argomento e lo esegue due volte
+
+#!/bin/bash
+command=$*
+$command
+$command
+
+3) Si realizzi uno script "scriviNumeri.sh" che scrive a video i numeri da 0 ad N: 0,1,2,...,N-1
+	Il valore di N viene passato allo script tramite riga di comando
+
+#!/bin/bash
+if [ $# -eq 1 ]
+then
+	echo "Argomento $1 accettato"
+
+	i=0
+	while [ $i -lt $1 ]
+	do
+		echo $i
+		i=$(( $i + 1 ))
+	done
+
+	exit 0
+else
+	echo "Non è stato passato esattamente un numero come argomento"
+	exit -1
+fi
+
+4) Si realizzi uno script che chiameremo "scriviNumeri.sh" che
+	scrive a video i numeri da 20 a 10: 20,19,18,...,10
+	Esempio di lancio: $ ./scriviNumeri.sh
+
+#!/bin/bash
+i=20
+while [ $i -le 10 ]
+do
+	echo "$i"
+	i=$(( $i - 1 ))
+done
