@@ -1,0 +1,83 @@
+1)	dato il seguente file clienti.txt:
+	
+	100:2:Cliente 1
+	200:8:Cliente 8
+	500:2:Cliente 3
+
+	Calcoliamo il subtotale per ogni cliente: 100x2,200x8,500x2 e poi il totale come somma
+
+2)
+	Dato il file di testo tabella.txt così fatto:
+	Luigi
+	Marco
+	Giovanni
+	Luigi
+	Giorgio
+	Luca
+	Maria
+
+	scrivere uno script che eseguito da awk sul file stampa il contenuto del file tutto su di un unica riga:
+	Luigi Marco Giovanni Luigi Giorgio Luca Maria
+
+3)
+	Dato il file di testo poesia.txt così fatto:
+
+	La donzelletta vien dalla campagna,
+	In sul calar del sole,
+	Col suo fascio dell’erba;e reca in mano
+	Un mazzolin di rose e di viole,
+	Onde, siccome suole,
+	Ornare ella si appresta
+	Dimani, al dì di festa, il petto e il crine.
+	Siede con le vicine 
+	Su la scala a filar la vecchierella
+	Incontro là dove si perde il giorno;
+	E novellando vien del suo buon tempo,
+	Quando ai dì della festa ella si ornava,
+	Ed ancor sana e snella
+	Solea danzar la sera intra di quei
+	Ch’ebbe compagni dell’età più bella.
+
+	scrivere uno script che eseguito da awk sul file stampa il contenuto del file fino alla stringa "crine"
+
+4)
+	Dato il file di testo "tabella2.txt" così fatto:
+
+	Luigi;Marco;Nino;Nicola;Alberto;Luigi;
+	Marco;Giovanni;Giorgio;Maria;
+	Giovanni;Ottavio;Luigi;Luigi;Nino;
+	Luigi;Guglielmo;Nino;Ennio;Luigi;
+	Giorgio;Vittorio;
+	Luca;Marta;Maria;Luigi;Salvo;
+	Maria;Nino;Ennio;Luigi;Maria;
+
+	scrivere un programma che eseguito da AWK sul file determini quante volte è contenuto il nome "Luigi" nel file "tabella2.txt"
+=========================
+
+1)
+	awk -F ':' '{print $3 "->" $1 * $2 ; total+=$1*$2 } END{ print total }' clienti.txt
+
+2)
+	#!/bin/awk
+	BEGIN{ORS=" "}
+	{ print }
+	
+	oppure
+
+	awk 'BEGIN{ORS=" "} END{print "\n"}' tabella.txt
+
+3)
+	awk '{print} /crine/{exit}' poesia.txt
+
+4)
+	#!/bin/awk
+	BEGIN { FS=";" }
+
+	{
+
+		for(i=0; i < NF; i++)
+			if($i == "Luigi")
+				total++
+	}
+
+	END { print "Nel file tabelle2.txt il nome Luigi ricorre " total " volte" }

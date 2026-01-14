@@ -1,0 +1,11 @@
+#!/bin/awk
+BEGIN { FS=";" }
+
+{
+
+	for(i=0; i < NF; i++)
+		if($i == "Luigi")
+			total++
+}
+
+END { print "Nel file tabelle2.txt il nome Luigi ricorre " total " volte" }
