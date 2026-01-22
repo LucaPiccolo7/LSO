@@ -1,0 +1,2 @@
+1) Scrivete un programma che mostra il contenuto di un file a byte alterni (un carattere si ed uno no)
+2) Scrivete un programma che mostra il contenuto di un file alla rovescia, cioò a partire dall'ultimo carattere fino ad arrivare al primo
